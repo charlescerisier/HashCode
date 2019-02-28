@@ -11,7 +11,10 @@ def slidesByNbTags(slides, delta = 0) :
 
 			if (nbTags >= taille + delta) or (nbTags >= taille - delta) :
 				tab.append(slide)
-				slides.pop(slide)
+				#print("-----------\n{}\n".format(slides))
+				slides.pop(slides.index(slide))
+				#print("{}-----------\n".format(slides))
+
 		listeByNbTags.append(tab)
 		taille+=1
 

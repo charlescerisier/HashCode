@@ -12,9 +12,9 @@ def main():
 	slides = imgToSlide(H,V)
 
 	printSlide(slides[0])
-
-	slidesSortedBySize = slidesByNbTags(slides)
-	
+	print(len(slides))
+	slidesSortedBySize = slidesByNbTags(slides[0:300])
+	print(len(slidesSortedBySize))
 
 if __name__ == "__main__":
 	main()
