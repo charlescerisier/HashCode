@@ -1,8 +1,11 @@
-fileName = "a_example.txt"
+fileName = "c_memorable_moments.txt"
+maxTags = 2000
 
 nbPics = 0
 pics = []
 i = 0
+
+picsBySize = [[] for i in range(maxTags)]
 
 # PICS LINE FORMAT
 # PICS : 
@@ -19,18 +22,36 @@ with open(fileName) as file:
     print("File " + fileName + " opened")
 
     for line in file:
-        print(line)
+        #print(line)
         if (i == 0):
-            nbPics = line
+            nbPics = line.strip()
         else:
-            picLine = line.replace('\n', '').split(' ')
+            picLine = line.strip().split(' ')
             pic = {}
             pic['ID'] = i - 1
             pic['type'] = picLine[0]
-            pic['nbTags'] = picLine[1]
+            pic['nbTags'] = int(picLine[1])
             pic['tags'] = picLine[2:]
             pics.append(pic)
+
+            try:
+                picsBySize[int(picLine[1])].append(pic)
+            except:
+                picsBySize[int(picLine[1])] = []
+                picsBySize[int(picLine[1])].append(pic)
         
         i += 1
 
-    print(pics)
+    #print(pics)
+
+H = []
+V = []
+
+for pic in pics:
+    if (pic['type'] == 'H'):
+        H.append(pic)
+    else:
+        V.append(pic)
+
+print("Number of images : " + nbPics)
+print("H : " + str(len(H)) + " ; V : " + str(len(V)))
