@@ -2,19 +2,33 @@ from parse import *
 from match import *
 from imgToSlide import *
 from slideByNbTags import *
+from theEnd import *
+from couples import *
 
 def printSlide(slide):
 	for key,val in slide.items():
 		print("{} => {}".format(key, val))
 
-def main():
-	H, V = parse("c_memorable_moments.txt", 2000)
-	slides = imgToSlide(H,V)
+def couplesSlidesToSlides(couples):
+	slides = []
+	for couple in couples:
+		slides += couple[0]
+		slides += couple[1]
+	return slides
 
-	printSlide(slides[0])
-	print(len(slides))
-	slidesSortedBySize = slidesByNbTags(slides[0:300])
-	print(len(slidesSortedBySize))
+def main(fileNames):
+
+	for fileName in fileNames:
+		print("Processing " + fileName)
+		H, V = parse(fileName, 2000)
+		slides = imgToSlide(H,V)
+		slidesSortedBySize = slidesByNbTags(slides)
+		slides = concatenateSlides(slidesSortedBySize)
+		final = couplesSlidesToSlides(findCouples([], slides, slides, 0 ))
+		##print(len(slidesSortedBySize))
+		fromSlidesToResponse(fileName, final)
+
 
 if __name__ == "__main__":
-	main()
+	fileNames = ["c_memorable_moments.txt", "b_lovely_landscapes.txt", "d_pet_pictures.txt", "e_shiny_selfies.txt"]
+	main(fileNames)

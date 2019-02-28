@@ -56,7 +56,5 @@ def parse(fileName, maxTags) :
 
     return H,V
 
-
-
 if __name__ == "__main__":
     parse("c_memorable_moments.txt", 2000)
