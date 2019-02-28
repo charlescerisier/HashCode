@@ -8,6 +8,7 @@ i = 0
 # PICS : 
 # [
 #    {
+#       "ID": 1
 #       "nbTags": 1
 #       "tags": ["tag1", "tag2", "tag3"]
 #       "type": 'H'
@@ -24,6 +25,7 @@ with open(fileName) as file:
         else:
             picLine = line.replace('\n', '').split(' ')
             pic = {}
+            pic['ID'] = i - 1
             pic['type'] = picLine[0]
             pic['nbTags'] = picLine[1]
             pic['tags'] = picLine[2:]
