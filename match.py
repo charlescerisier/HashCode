@@ -1,3 +1,4 @@
+# Retourne le score de l'image (0.5 = parfait)
 def compare(listeA, listeB):	
 	nbTags = len(listeA)
 	count = 0
@@ -7,6 +8,7 @@ def compare(listeA, listeB):
 	
 	return count/nbTags
 
+# Retourne si le score entre 2 images est 0.5 à delta près
 def match(delta, listeA, listeB):
 	score = compare(listeA, listeB)
 	return  (0.5 - delta <= score) and ( score <= 0.5 + delta)
