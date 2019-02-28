@@ -54,6 +54,8 @@ def parse(fileName, maxTags) :
     print("Number of images : " + nbPics)
     print("H : " + str(len(H)) + " ; V : " + str(len(V)))
 
+    return H,V
+
 
 
 if __name__ == "__main__":
