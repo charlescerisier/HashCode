@@ -24,11 +24,13 @@ def main(fileNames):
 		slides = imgToSlide(H,V)
 		slidesSortedBySize = slidesByNbTags(slides)
 		slides = concatenateSlides(slidesSortedBySize)
-		final = couplesSlidesToSlides(findCouples([], slides, slides, 0 ))
+		print("find : " + str(findCouples([], slides, slides, 0 )))
+		orderedSlides = couplesSlidesToSlides(findCouples([], slides, slides, 0 ))
+		print("ordered : " + str(orderedSlides))
 		##print(len(slidesSortedBySize))
-		fromSlidesToResponse(fileName, final)
+		fromSlidesToResponse(fileName, orderedSlides)
 
 
 if __name__ == "__main__":
-	fileNames = ["c_memorable_moments.txt", "b_lovely_landscapes.txt", "d_pet_pictures.txt", "e_shiny_selfies.txt"]
+	fileNames = ["a_example.txt", "c_memorable_moments.txt", "b_lovely_landscapes.txt", "d_pet_pictures.txt", "e_shiny_selfies.txt"]
 	main(fileNames)

@@ -20,7 +20,7 @@ def fromSlidesToResponse(fileName, listOfSlides):
 	file.write(str(nbSlides) + ret)
 
 	for eachSlide in listOfSlides :
-		for eachImg in eachSlide['content'] :
+		for eachImg in eachSlide["content"] :
 			file.write(str(eachImg["ID"]) + esp)
 		file.write(ret)
 
