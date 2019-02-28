@@ -1,14 +1,21 @@
 def slidesByNbTags(slides, delta = 0) :
 	listeByNbTags = []
 	
-	int taille = 1
-	while (len(slides) > 0):
-		# On parcourt toutes les slides restantes
-		for (slide in slides):
+	taille = 1
+	while len(slides) > 0 :
+		tab = []
+		for slide in slides : # On parcourt toutes les slides restantes
 			nbTags = 0
-			for (img in slide['content'])
-			if ([])
+			for img in slide['content'] :
+				nbTags += img['nbTags']
 
+			if (nbTags >= taille + delta) or (nbTags >= taille - delta) :
+				tab.append(slide)
+				slides.pop(slide)
+		listeByNbTags.append(tab)
+		taille+=1
+
+	return listeByNbTags
 
 if __name__ == "__main__":
 	slides = []
